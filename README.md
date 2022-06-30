@@ -12,7 +12,7 @@ PspCidTable & ExDestroyHandleA
 
 ![image](https://user-images.githubusercontent.com/108452509/176612581-56b13fc0-91b7-4736-b85f-c39268923890.png)
 
-4. Test the signature and make sure it works (your signature may be different depending on your winver) (your signnature should look like something along the lines of \xE8\x00\x00\x00\x00\x49\x8B\xCC\xE8\x00\x00\x00\x00\x48\x8B\xCF. x????xxxx????xxx)
+4. Test the signature and make sure it works (your signature may be different depending on your winver) (your signature should look like something along the lines of \xE8\x00\x00\x00\x00\x49\x8B\xCC\xE8\x00\x00\x00\x00\x48\x8B\xCF. x????xxxx????xxx)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
