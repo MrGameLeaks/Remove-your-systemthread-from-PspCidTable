@@ -218,3 +218,5 @@ cast memory from address into the _HANDLE_TABLE_ENTRY structure
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 After deleting the handle make sure the thread doesn't exit else u get a BSOD.
+
+For any help message me on discord: 
