@@ -9,7 +9,9 @@ PspCidTable & ExDestroyHandleA
 1. Open up ntoskrnl.exe in Ida Pro.
 2. In the functions window search for the function PspReferenceCidTableEntry (or any function that moves PspCidTable address into a register)
 3. Signature an instruction that moves the address of PspCidTable into a register
+
 ![image](https://user-images.githubusercontent.com/108452509/176612581-56b13fc0-91b7-4736-b85f-c39268923890.png)
+
 4. Test the signature and make sure it works (your signature may be different depending on your winver) (your signnature should look like something along the lines of \xE8\x00\x00\x00\x00\x49\x8B\xCC\xE8\x00\x00\x00\x00\x48\x8B\xCF. x????xxxx????xxx)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -19,9 +21,13 @@ for this instruction 3 bytes are the opcode and the next 4 bytes are the address
 
 1. In the functions window search for the function ExDestroyHandle
 2. Check the xrefs to ExDestroyHandle and click any of the xrefs that calls this function
+
 ![image](https://user-images.githubusercontent.com/108452509/176613375-6e17e332-6f14-4ebe-b7c0-38dff17c8402.png)
+
 3. Signature the instruction that calls the ExDestroyHandle function
+
 ![image](https://user-images.githubusercontent.com/108452509/176613389-8be09146-48c9-4bb0-8c80-e67dae04069f.png)
+
 4. Test the signature and make sure it works
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -51,7 +57,9 @@ func ExDestroyHandle;
 As you see we need the HANDLE_TABLE structure, lets quickly get it from windbg.
 1. open local kernel debug session
 2. type dt _HANDLE_TABLE
+
 ![image](https://user-images.githubusercontent.com/108452509/176614057-12085e0b-0223-4874-95e8-893ea6de654c.png)
+
 3. define this structure in your definitions file
 
 Exmaple:
@@ -148,6 +156,7 @@ PHANDLE_TABLE_ENTRY ExpLookupHandleTableEntry(const ULONG64* pHandleTable, const
 As you can see the return type is pointer to HANDLE_TABLE_ENTRY
 Lets get this struct in windbg like we did before
 (dt _HANDLE_TABLE_ENTRY)
+	
 ![image](https://user-images.githubusercontent.com/108452509/176614605-7c4e0be7-b5b1-4735-9ef3-fe0d297f4c21.png)
 	
 As you can see offsets of some variables are the same?
@@ -193,14 +202,17 @@ This should be it, you can simply check using windbg to get some more informatio
 Commands:
 dd PspCidTable
 get the memory inside PspCidTable here you can see your table handle
+	
 ![image](https://user-images.githubusercontent.com/108452509/176614937-38138b2e-88bc-4b8b-8dcc-b4624a84788f.png)
 
 dt _HANDLE_TABLE address
 cast memory from address into the _HANDLE_TABLE structure
+	
 ![image](https://user-images.githubusercontent.com/108452509/176615015-36d8aeb4-95d8-43a2-921c-380200cc77ee.png)
 
 dt _HANDLE_TABLE_ENTRY address
 cast memory from address into the _HANDLE_TABLE_ENTRY structure
+	
 ![image](https://user-images.githubusercontent.com/108452509/176615094-d370669e-1fcd-42e4-8a43-d3e28436527a.png)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
