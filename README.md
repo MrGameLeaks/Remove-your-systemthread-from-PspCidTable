@@ -149,6 +149,7 @@ As you can see the return type is pointer to HANDLE_TABLE_ENTRY
 Lets get this struct in windbg like we did before
 (dt _HANDLE_TABLE_ENTRY)
 ![image](https://user-images.githubusercontent.com/108452509/176614605-7c4e0be7-b5b1-4735-9ef3-fe0d297f4c21.png)
+	
 As you can see offsets of some variables are the same?
 This is because for example the 0x000 offset is a class which members all occupie the same memory and this class is able to hold only 1 of it's members at the same time in c++ this is an union.
 So this struct will be:
